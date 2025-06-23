@@ -1,8 +1,6 @@
 -- Script de creacion de la bbdd a utilizar, creando las tablas necesarias 
 -- con sus correspondientes insert
 
--- Para su ejecucion usar script -> sqlite3 ejercicio_evolve.db < script.sql
-
 
 PRAGMA foreign_keys = ON;
 
