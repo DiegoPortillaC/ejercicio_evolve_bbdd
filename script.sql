@@ -1,11 +1,14 @@
 -- Script de creacion de la bbdd a utilizar, creando las tablas necesarias 
 -- con sus correspondientes insert
 
+-- Para su ejecucion usar script -> sqlite3 ejercicio_evolve.db < script.sql
+
+
 PRAGMA foreign_keys = ON;
 
 
 CREATE TABLE usuario (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    usuario_id INTEGER PRIMARY KEY AUTOINCREMENT,
     nombre TEXT NOT NULL,
     apellidos TEXT NOT NULL,
     email TEXT NOT NULL UNIQUE,
@@ -22,7 +25,7 @@ CREATE TABLE factura (
     descripcion TEXT,
     monto_total REAL NOT NULL,
     estado TEXT CHECK(estado IN ('Pendiente', 'Pagada', 'Cancelada')) DEFAULT 'Pendiente',
-    FOREIGN KEY (usuario_id) REFERENCES usuario(id) ON DELETE CASCADE
+    FOREIGN KEY (usuario_id) REFERENCES usuario(usuario_id) ON DELETE CASCADE
 );
 
 
