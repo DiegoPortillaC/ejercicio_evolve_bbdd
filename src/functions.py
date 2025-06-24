@@ -39,7 +39,7 @@ def second_menu():
     Muestra el menú de selección de usuario y obtiene la opción seleccionada.
     """
     # Mostrar menú de selección de usuario
-    sencond_aswer = int(input("====== Sistema de Gestión de Usuarios y Facturas ======"
+    sencond_aswer = int(input("\n====== Sistema de Gestión de Usuarios y Facturas ======"
                                              "\n =============== Selección de usuario ===============\n"
                                     "1. Selección por usuario_id \n" 
                                     "2. Selección por email  \n"
@@ -52,7 +52,7 @@ def trird_menu():
     Muestra el menú de resumen financiero y obtiene la opción seleccionada.
     """
     # Mostrar menú de resumen financiero
-    sencond_aswer= int(input("====== Sistema de Gestión de Usuarios y Facturas ======"
+    sencond_aswer= int(input("\n====== Sistema de Gestión de Usuarios y Facturas ======"
                                              "\n =============== Resumen financiero ===============\n"
                                     "1. Resumen financiero por usuario \n" 
                                     "2. Resumen general \n"
@@ -82,7 +82,7 @@ def insert_user(conn, cursor):
     
     # Confirmar cambios en la base de datos
     conn.commit()
-    print("\nUsuario creado correctamente.")
+    print("\nUsuario creado correctamente.\n")
 
 def select_user_id(conn, cursor):
     """
