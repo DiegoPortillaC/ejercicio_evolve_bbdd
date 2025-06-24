@@ -11,8 +11,17 @@ def main ():
                 insert_user(conn, cursor)
 
             elif main_answer == 2:
-                select_user(conn, cursor)
-
+                try:
+                    sencond_aswer = second_menu()
+                    if sencond_aswer == 1:
+                        select_user_id(conn, cursor)
+                    elif sencond_aswer == 2:
+                        select_user_email(conn, cursor)
+                    else:
+                        print("Elegiste una opción no presente")
+                except ValueError:
+                    print("Usaste un caracter no esperado")
+                
             elif main_answer == 3:
                 insert_factura(conn, cursor)
 
@@ -24,11 +33,11 @@ def main ():
             
             elif main_answer == 6:
                 try:
-                    sencond_aswer = second_menu()
+                    sencond_aswer = trird_menu()
                     if sencond_aswer == 1:
                         financial_user_sumary(cursor)
-                    elif sencond_aswer ==2:
-                        print("")
+                    elif sencond_aswer == 2:
+                        financial_general_summary(cursor)
                     else:
                         print("Elegiste una opción no presente")     
                 except ValueError:
