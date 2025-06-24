@@ -1,6 +1,12 @@
 import sqlite3
 
 
+def bd_connect():
+    conn = sqlite3.connect("ejercicio_evolve.db")
+    conn.execute("PRAGMA foreign_keys = ON;")
+    cursor = conn.cursor()
+    return conn,cursor
+
 def main_menu():
     main_answer = int(input("\n === Sistema de Gestión de Usuarios y Facturas === \n"
                                 "1. Registrar nuevo usuario \n" 
@@ -14,6 +20,15 @@ def main_menu():
                             ))
                         
     return main_answer
+
+def second_menu():
+    sencond_aswer= int(input("====== Sistema de Gestión de Usuarios y Facturas ======"
+                                             "\n =============== Resumen financiero ===============\n"
+                                    "1. Resumen financiero por usuario \n" 
+                                    "2. Resumen general \n"
+                                    "Seleccione una opción: \t"))
+                    
+    return sencond_aswer
 
 def insert_user(conn, cursor):
     print("\n==== Sistema de Gestión de Usuarios y Facturas ====\n"     
@@ -71,7 +86,7 @@ def show_all_users(cursor):
     print()
 
 def user_bill_list(cursor):
-    print("" "\n====== Sistema de Gestión de Usuarios y Facturas ======\n"
+    print("\n====== Sistema de Gestión de Usuarios y Facturas ======\n"
             "===== Sistema de seleccion de facturas por usuario ====\n")
     usuario_id = int(input("Sobre que usuario_id quiere realizar la consulta:   "))
     cursor.execute("""SELECT * FROM factura WHERE usuario_id = ?""", (usuario_id,))
@@ -83,4 +98,24 @@ def user_bill_list(cursor):
         print("\nFacturas encontradas:")
         for factura in facturas:
             print(f"ID: {factura[0]}, Fecha: {factura[2]}, Descripcion: {factura[3]}"+
-            ", Monto: {factura[4]}, Estado: {factura[5]}")
+            f", Monto: {factura[4]}, Estado: {factura[5]}")
+
+def financial_user_sumary(cursor):
+    cursor.execute("""
+                        SELECT 
+                            u.usuario_id,
+                            u.nombre,
+                            COUNT(f.numero_factura) as cantidad_facturas,
+                            SUM(f.monto_total) as total_facturado
+                        FROM usuario u
+                        INNER JOIN factura f ON u.usuario_id = f.usuario_id
+                        GROUP BY u.usuario_id, u.nombre
+                        ORDER BY u.usuario_id
+                        """)
+    busquedas = cursor.fetchall()
+                        
+    print("\n========= Resumen Financiero por Usuario ============\n "
+                        "ID\tNombre\t\tFacturas\tTotal Facturado")
+    print("-------------------------------------------------------------------")
+    for busqueda in busquedas:
+        print(f"{busqueda[0]}\t{busqueda[1]}\t\t{busqueda[2]}\t\t{busqueda[3]} €")
