@@ -12,9 +12,9 @@ ejercicio_evolve_bbdd/
 ├── docs/
 │   └── README.md      # Documentación del proyecto
 ├── src/
-│   ├── main.py        # Punto de entrada de la aplicación
-│   └── functions.py   # Funciones principales del sistema
-└── __pycache__        # Archivos compilados de Python
+    ├── main.py        # Punto de entrada de la aplicación
+    └── functions.py   # Funciones principales del sistema
+
 ```
 
 ## 📋 Requisitos
