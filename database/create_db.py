@@ -5,7 +5,7 @@ def create_database():
     cursor = conn.cursor()
     
     # Leer el contenido del script SQL
-    with open('script.sql', 'r', encoding='utf-8') as f:
+    with open('database/script.sql', 'r', encoding='utf-8') as f:
         sql_script = f.read()
     
     # Ejecutar el script
