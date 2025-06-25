@@ -7,14 +7,15 @@ Sistema de gestión de usuarios con base de datos SQLite y una interfaz de líne
 ```
 ejercicio_evolve_bbdd/
 ├── database/
-│   ├── create_db.py   # Script para crear la base de datos
-│   └── __pycache__    # Archivos compilados de Python
+│   ├── create_db.py         # Script para crear la base de datos
+│   └── __pycache__          # Archivos compilados de Python
 ├── docs/
-│   └── README.md      # Documentación del proyecto
+│   ├── README.md            # Documentación del proyecto
+│   └── estructura_bbdd.png  # Diagrama de la estructura de la base de datos
 ├── src/
-    ├── main.py        # Punto de entrada de la aplicación
-    └── functions.py   # Funciones principales del sistema
-
+│   ├── main.py              # Punto de entrada de la aplicación
+│   └── functions.py         # Funciones principales del sistema
+└── .gitignore               # Archivo de configuración de git
 ```
 
 ## 📋 Requisitos
