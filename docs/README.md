@@ -28,7 +28,7 @@ ejercicio_evolve_bbdd/
 1. **Clonar el repositorio**
 ```bash
 git clone https://github.com/DiegoPortillaC/ejercicio_evolve_bbdd.git
-cd ejercicio_evolve_bbdd
+cd ejercicio_evolve_bbdd_2
 ```
 
 2. **Crear la base de datos**
