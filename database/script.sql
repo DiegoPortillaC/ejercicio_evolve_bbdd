@@ -7,22 +7,21 @@ PRAGMA foreign_keys = ON;
 
 CREATE TABLE usuario (
     usuario_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    nombre TEXT NOT NULL,
-    apellidos TEXT NOT NULL,
-    email TEXT NOT NULL UNIQUE,
-    telefono TEXT NOT NULL,
-    direccion TEXT NOT NULL,
+    nombre TEXT NOT NULL CHECK (length(nombre) <= 30),
+    apellidos TEXT NOT NULL CHECK (length(apellidos) <= 40),
+    email TEXT NOT NULL UNIQUE CHECK (length(email) <= 50),
+    telefono TEXT NOT NULL CHECK (length(telefono) <= 12),
+    direccion TEXT NOT NULL CHECK (length(direccion) <= 50),
     fecha_registro DATETIME DEFAULT CURRENT_TIMESTAMP
 );
-
 
 CREATE TABLE factura (
     numero_factura INTEGER PRIMARY KEY AUTOINCREMENT,
     usuario_id INTEGER NOT NULL,
     fecha_emision DATETIME DEFAULT CURRENT_TIMESTAMP,
-    descripcion TEXT,
+    descripcion TEXT CHECK (length(descripcion) <= 200),
     monto_total REAL NOT NULL,
-    estado TEXT CHECK(estado IN ('Pendiente', 'Pagada', 'Cancelada')) DEFAULT 'Pendiente',
+    estado TEXT NOT NULL CHECK (estado IN ('Pendiente', 'Pagada', 'Cancelada')) DEFAULT 'Pendiente',
     FOREIGN KEY (usuario_id) REFERENCES usuario(usuario_id) ON DELETE CASCADE
 );
 
