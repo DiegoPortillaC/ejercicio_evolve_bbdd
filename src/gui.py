@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import ttk, messagebox
-from functions import bd_connect, insert_user, select_user_id, select_user_email, insert_factura, show_all_users, user_bill_list, financial_user_sumary, financial_general_summary
+import functions as func
 
 class FacturasGUI:
     def __init__(self, root):
@@ -9,7 +9,7 @@ class FacturasGUI:
         self.root.geometry("800x600")
         
         # Conectar a la base de datos
-        self.conn, self.cursor = bd_connect()
+        self.conn, self.cursor = func.bd_connect()
         
         # Crear menú principal
         self.create_main_menu()
@@ -52,7 +52,7 @@ class FacturasGUI:
     def registrar_usuario(self):
         def submit():
             try:
-                success, message = insert_user(
+                success, message = func.insert_user(
                     self.conn, self.cursor,
                     entries["Nombre"].get(),
                     entries["Apellido"].get(),
@@ -90,7 +90,7 @@ class FacturasGUI:
             try:
                 if var.get() == 1:
                     user_id = id_entry.get()
-                    usuario = select_user_id(self.conn, self.cursor, int(user_id))
+                    usuario = func.select_user_id(self.conn, self.cursor, int(user_id))
                     if usuario:
                         self.results_text.insert(tk.END, f"Usuario encontrado:\n")
                         self.results_text.insert(tk.END, f"ID: {usuario[0]}\n")
@@ -103,7 +103,7 @@ class FacturasGUI:
                         messagebox.showinfo("No encontrado", "No se encontró un usuario con ese ID")
                 else:
                     email = email_entry.get()
-                    usuario = select_user_email(self.conn, self.cursor, email)
+                    usuario = func.select_user_email(self.conn, self.cursor, email)
                     if usuario:
                         self.results_text.insert(tk.END, f"Usuario encontrado:\n")
                         self.results_text.insert(tk.END, f"ID: {usuario[0]}\n")
@@ -144,7 +144,7 @@ class FacturasGUI:
     def crear_factura(self):
         def submit():
             try:
-                success, message = insert_factura(
+                success, message = func.insert_factura(
                     self.conn, self.cursor,
                     int(entries["ID Usuario"].get()),
                     entries["Descripción"].get(),
@@ -186,7 +186,7 @@ class FacturasGUI:
     def mostrar_usuarios(self):
         self.clear_results()
         try:
-            usuarios = show_all_users(self.cursor)
+            usuarios = func.show_all_users(self.cursor)
             if usuarios:
                 self.results_text.insert(tk.END, "ID\tNombre\t\tApellidos\t\t\tEmail\n")
                 self.results_text.insert(tk.END, "---------------------------------------------------------------------------------------\n")
@@ -200,7 +200,7 @@ class FacturasGUI:
             self.clear_results()
             try:
                 user_id = int(user_id_entry.get())
-                facturas = user_bill_list(self.cursor, user_id)
+                facturas = func.user_bill_list(self.cursor, user_id)
                 if facturas:
                     self.results_text.insert(tk.END, "Facturas encontradas:\n")
                     self.results_text.insert(tk.END, "ID\tFecha\t\t\tDescripción\t\tMonto\t\tEstado\n")
@@ -228,7 +228,7 @@ class FacturasGUI:
             self.clear_results()
             try:
                 user_id = int(user_id_entry.get())
-                resumen = financial_user_sumary(self.cursor, user_id)
+                resumen = func.financial_user_sumary(self.cursor, user_id)
                 if resumen:
                     self.results_text.insert(tk.END, "========= Resumen Financiero por Usuario ============\n")
                     self.results_text.insert(tk.END, f"ID: {resumen[0]}\n")
@@ -254,7 +254,7 @@ class FacturasGUI:
     def resumen_general(self):
         self.clear_results()
         try:
-            resumen = financial_general_summary(self.cursor)
+            resumen = func.financial_general_summary(self.cursor)
             if resumen:
                 self.results_text.insert(tk.END, "========= RESUMEN GENERAL =========\n")
                 self.results_text.insert(tk.END, f"Total usuarios: {resumen['total_usuarios']}\n")
