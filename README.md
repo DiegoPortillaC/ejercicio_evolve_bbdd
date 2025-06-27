@@ -1,6 +1,6 @@
-# 📚 Sistema de Gestión de Usuarios
+# 📚 Sistema de Gestión de Usuarios y Facturas
 
-Sistema de gestión de usuarios con base de datos SQLite y una interfaz de línea de comandos interactiva.
+Sistema de gestión de usuarios y facturas con base de datos SQLite y una interfaz gráfica moderna.
 
 ## 📋 Estructura del Proyecto
 
@@ -13,21 +13,25 @@ ejercicio_evolve_bbdd/
 │   ├── README.md            # Documentación principal del proyecto
 │   └── estructura_bbdd.png  # Diagrama de la estructura de la base de datos
 ├── src/                     # Código fuente principal de la aplicación
-│   ├── main.py              # Punto de entrada de la aplicación y manejo del menú principal
-│   └── functions.py         # Implementación de las funciones de negocio y operaciones CRUD
+│   ├── main.py              # Punto de entrada de la aplicación
+│   ├── functions.py         # Implementación de las funciones de negocio
+│   └── gui.py               # Implementación de la interfaz gráfica
 └── .gitignore               # Archivo que especifica qué archivos/directorios ignorar en git
 ```
+
+![Estructura de la Base de Datos](docs/estructura_bbdd.png "Estructura de la Base de Datos")
 
 ## 📋 Requisitos
 
 - Python 3.8 o superior
 - sqlite3 (incluido con Python por defecto)
+- tkinter (incluido con Python por defecto)
 
 ## 🚀 Instalación y Ejecución
 
 1. **Clonar el repositorio**
 ```bash
-git clone https://github.com/DiegoPortillaC/ejercicio_evolve_bbdd.git
+git clone https://github.com/DiegoPortillaC/ejercicio_bbdd.git
 cd ejercicio_evolve_bbdd
 ```
 
@@ -45,7 +49,12 @@ python src/main.py
 
 - 📝 Registro de nuevos usuarios
 - 🔍 Consulta de usuarios existentes por ID o email
-- 🔄 Interfaz de usuario interactiva
+- 💰 Creación de facturas
+- 👥 Visualización de todos los usuarios
+- 📊 Visualización de facturas por usuario
+- 📈 Resumen financiero por usuario
+- 📈 Resumen financiero general
+- 🔄 Interfaz gráfica con tkinter
 - 📝 Validación de datos de entrada
 - 🔐 Almacenamiento seguro en SQLite
 
@@ -53,5 +62,15 @@ python src/main.py
 
 - 🔐 Asegúrate de tener los permisos necesarios para crear archivos en el directorio donde clonas el repositorio.
 - 💾 La base de datos SQLite se creará automáticamente en el directorio raíz del proyecto.
-- 📱 La aplicación utiliza un menú interactivo con opciones claras y fáciles de usar.
+- 📱 La aplicación utiliza una interfaz gráfica intuitiva con botones y campos de entrada.
 - 🔄 El sistema de validación asegura la integridad de los datos ingresados.
+- 📝 Los resultados se muestran en un área de texto con formato tabular para mejor legibilidad.
+
+## 📝 Flujo de codigo
+
+![Flujo de codigo](docs/codeflow.png "Flujo de codigo")
+
+
+## 📝 Flujo de usuario en la app
+
+![Flujo de usuario](docs/user_flow.png "Flujo de usuario")
