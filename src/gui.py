@@ -203,10 +203,10 @@ class FacturasGUI:
                 facturas = user_bill_list(self.cursor, user_id)
                 if facturas:
                     self.results_text.insert(tk.END, "Facturas encontradas:\n")
-                    self.results_text.insert(tk.END, "ID\tFecha\tDescripción\tMonto\tEstado\n")
-                    self.results_text.insert(tk.END, "-------------------------------------------------------------\n")
+                    self.results_text.insert(tk.END, "ID\tFecha\t\t\tDescripción\t\tMonto\t\tEstado\n")
+                    self.results_text.insert(tk.END, "----------------------------------------------------------------------------------\n")
                     for factura in facturas:
-                        self.results_text.insert(tk.END, f"{factura[0]}\t{factura[2]}\t{factura[3]}\t{factura[4]}\t{factura[5]}\n")
+                        self.results_text.insert(tk.END, f"{factura[0]}\t{factura[2]}\t\t\t{factura[3]}\t\t{factura[4]}\t\t{factura[5]}\n")
                 else:
                     messagebox.showinfo("No encontrado", "No se encontraron facturas para este usuario")
             except Exception as e:
