@@ -10,13 +10,14 @@ ejercicio_evolve_bbdd/
 │   ├── create_db.py         # Script para crear y configurar la base de datos SQLite
 │   └── script.sql           # Script SQL con la definición de la estructura de la base de datos
 ├── docs/                    # Documentación del proyecto
-│   ├── README.md            # Documentación principal del proyecto
 │   └── estructura_bbdd.png  # Diagrama de la estructura de la base de datos
 ├── src/                     # Código fuente principal de la aplicación
 │   ├── main.py              # Punto de entrada de la aplicación
 │   ├── functions.py         # Implementación de las funciones de negocio
 │   └── gui.py               # Implementación de la interfaz gráfica
+├──  README.md               # Documentación principal del proyecto
 └── .gitignore               # Archivo que especifica qué archivos/directorios ignorar en git
+
 ```
 
 ![Estructura de la Base de Datos](docs/estructura_bbdd.png "Estructura de la Base de Datos")
