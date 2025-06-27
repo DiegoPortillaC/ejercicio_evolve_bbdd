@@ -159,31 +159,39 @@ class FacturasGUI:
                 messagebox.showerror("Error", str(e))
             finally:
                 dialog.destroy()
-        
+
         dialog = tk.Toplevel(self.root)
         dialog.title("Crear Factura")
-        dialog.geometry("400x300")
-        
+        dialog.geometry("400x200")
+
         # Campos de entrada
         fields = ["ID Usuario", "Descripción", "Monto Total", "Estado"]
         entries = {}
-        
+
         for i, field in enumerate(fields):
             ttk.Label(dialog, text=field).grid(row=i, column=0, padx=5, pady=5)
-            entries[field] = ttk.Entry(dialog)
-            entries[field].grid(row=i, column=1, padx=5, pady=5)
-        
+            if field == "Estado":
+                combo = ttk.Combobox(dialog, values=["Pagada", "Cancelada", "Pendiente"], state="readonly")
+                combo.grid(row=i, column=1, padx=5, pady=5)
+                combo.current(0)  # Seleccionar la primera opción por defecto
+                entries[field] = combo
+            else:
+                entry = ttk.Entry(dialog)
+                entry.grid(row=i, column=1, padx=5, pady=5)
+                entries[field] = entry
+
         ttk.Button(dialog, text="Crear", command=submit).grid(row=len(fields), column=0, columnspan=2, pady=10)
+
 
     def mostrar_usuarios(self):
         self.clear_results()
         try:
             usuarios = show_all_users(self.cursor)
             if usuarios:
-                self.results_text.insert(tk.END, "ID\tNombre\tApellidos\tEmail\n")
-                self.results_text.insert(tk.END, "-------------------------------------------------------------\n")
+                self.results_text.insert(tk.END, "ID\tNombre\t\tApellidos\t\t\tEmail\n")
+                self.results_text.insert(tk.END, "---------------------------------------------------------------------------------------\n")
                 for user in usuarios:
-                    self.results_text.insert(tk.END, f"{user[0]}\t{user[1]}\t{user[2]}\t{user[3]}\n")
+                    self.results_text.insert(tk.END, f"{user[0]}\t{user[1]}\t\t{user[2]}\t\t\t{user[3]}\n")
         except Exception as e:
             messagebox.showerror("Error", str(e))
 
@@ -208,7 +216,7 @@ class FacturasGUI:
         
         dialog = tk.Toplevel(self.root)
         dialog.title("Facturas por Usuario")
-        dialog.geometry("300x100")
+        dialog.geometry("400x150")
         
         ttk.Label(dialog, text="ID Usuario:").pack(pady=5)
         user_id_entry = ttk.Entry(dialog)
@@ -236,7 +244,7 @@ class FacturasGUI:
         
         dialog = tk.Toplevel(self.root)
         dialog.title("Resumen Financiero")
-        dialog.geometry("300x100")
+        dialog.geometry("320x120")
         
         ttk.Label(dialog, text="ID Usuario:").pack(pady=5)
         user_id_entry = ttk.Entry(dialog)

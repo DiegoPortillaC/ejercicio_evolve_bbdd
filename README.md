@@ -55,8 +55,7 @@ python src/main.py
 - 📈 Resumen financiero por usuario
 - 📈 Resumen financiero general
 - 🔄 Interfaz gráfica con tkinter
-- 📝 Validación de datos de entrada
-- 🔐 Almacenamiento seguro en SQLite
+
 
 ## 📝 Notas
 
