@@ -20,7 +20,6 @@ ejercicio_evolve_bbdd/
 
 ```
 
-![Estructura de la Base de Datos](docs/estructura_bbdd.png "Estructura de la Base de Datos")
 
 ## 📋 Requisitos
 
@@ -65,6 +64,10 @@ python src/main.py
 - 📱 La aplicación utiliza una interfaz gráfica intuitiva con botones y campos de entrada.
 - 🔄 El sistema de validación asegura la integridad de los datos ingresados.
 - 📝 Los resultados se muestran en un área de texto con formato tabular para mejor legibilidad.
+
+## 📝 Estructura BBDD
+
+![Estructura de la Base de Datos](docs/estructura_bbdd.png "Estructura de la Base de Datos")
 
 ## 📝 Flujo de codigo
 
