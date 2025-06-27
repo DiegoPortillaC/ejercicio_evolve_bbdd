@@ -32,7 +32,7 @@ ejercicio_evolve_bbdd/
 
 1. **Clonar el repositorio**
 ```bash
-git clone https://github.com/DiegoPortillaC/ejercicio_bbdd.git
+git clone https://github.com/DiegoPortillaC/ejercicio_evolve_bbdd.git
 cd ejercicio_evolve_bbdd
 ```
 
