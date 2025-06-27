@@ -1,6 +1,6 @@
 # 📚 Sistema de Gestión de Usuarios y Facturas
 
-Sistema de gestión de usuarios y facturas con base de datos SQLite y una interfaz gráfica moderna.
+Sistema de gestión de usuarios y facturas con base de datos SQLite con interfaz gráfica
 
 ## 📋 Estructura del Proyecto
 
